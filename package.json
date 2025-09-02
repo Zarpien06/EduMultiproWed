@@ -13,7 +13,10 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "firebase": "^10.12.2",
-    "framer-motion": "^11.0.0"
+    "framer-motion": "^11.0.0",
+    "three": "^0.160.0",
+    "@react-three/fiber": "^8.15.10",
+    "@react-three/drei": "^9.102.3"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.0",
