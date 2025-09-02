@@ -4,8 +4,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* Fuente principal */
 body {
   font-family: 'Poppins', sans-serif;
-  @apply bg-gray-900 text-white;
+  @apply bg-slate-950 text-white;
+}
+
+/* Animación degradado futurista */
+.bg-animated {
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
