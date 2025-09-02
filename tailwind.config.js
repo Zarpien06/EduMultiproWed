@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",  // 👈 necesario para detectar clases
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
