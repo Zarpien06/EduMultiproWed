@@ -6,16 +6,11 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  @apply bg-slate-950 text-white;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.bg-animated {
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Estilo para el modo oscuro */
+.dark {
+  background-color: #0f172a; /* slate-900 */
+  color: #f8fafc; /* slate-50 */
 }
