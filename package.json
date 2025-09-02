@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-    "firebase": "^10.12.2",
+    "react-dom": "^19.1.1",
+    "firebase": "^10.12.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.0",
