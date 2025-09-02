@@ -1,16 +1,20 @@
+import logo from "./assets/logo.png";
+import loginImg from "./assets/1.PNG";
+
 export default function App() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* NAVBAR */}
       <header className="bg-slate-950 shadow-lg">
-        <div className="container mx-auto flex items-center justify-between p-4">
-          <h1 className="text-2xl font-bold text-futuristic flex items-center gap-2">
-            <img src="/logo.png" alt="logo" className="w-10" />
-            EduMultiPro
-          </h1>
-          <span className="text-sm text-gray-300">Tu Aliado en el Camino Educativo</span>
-        </div>
+    <div className="container mx-auto flex items-center justify-between p-4">
+      <h1 className="text-2xl font-bold text-futuristic flex items-center gap-2">
+       <img src={logo} alt="logo" className="w-10" />
+           EduMultiPro
+         </h1>
+        <span className="text-sm text-gray-300">Tu Aliado en el Camino Educativo</span>
+         </div>
       </header>
+
 
       {/* MAIN */}
       <main className="flex flex-1 items-center justify-center">
@@ -42,9 +46,9 @@ export default function App() {
           </div>
 
           {/* IMAGEN */}
-          <div className="hidden md:block">
-            <img src="/imagen1.png" alt="login" className="w-80 rounded-2xl shadow-lg" />
-          </div>
+         <div className="hidden md:block">
+           <img src={loginImg} alt="login" className="w-80 rounded-2xl shadow-lg" />
+         </div>
         </div>
       </main>
 
@@ -85,3 +89,4 @@ export default function App() {
     </div>
   );
 }
+
