@@ -1,5 +1,5 @@
 import logo from "./assets/logo.png";
-import loginImg from "./assets/1.PNG";
+import loginImg from "./assets/1.png";
 
 export default function App() {
   return (
