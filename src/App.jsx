@@ -1,69 +1,108 @@
+import { motion } from "framer-motion";
 import logo from "./assets/logo.png";
 import loginImg from "./assets/1.png";
 
 export default function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white">
+    <div className="relative flex flex-col min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white">
+      {/* FONDO CON PARTICULAS */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.15),transparent_40%)] animate-pulse"></div>
+        <div className="absolute w-full h-full bg-[radial-gradient(circle_at_80%_80%,rgba(236,72,153,0.15),transparent_40%)] animate-pulse"></div>
+      </div>
+
       {/* NAVBAR */}
-      <header className="bg-slate-950/80 backdrop-blur-md shadow-lg sticky top-0 z-50">
+      <motion.header
+        initial={{ y: -80 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="bg-slate-950/70 backdrop-blur-md shadow-lg sticky top-0 z-50"
+      >
         <div className="container mx-auto flex items-center justify-between p-4">
-          <h1 className="text-2xl font-bold flex items-center gap-2 text-futuristic">
+          <motion.h1
+            whileHover={{ scale: 1.05 }}
+            className="text-2xl font-bold flex items-center gap-2"
+          >
             <img src={logo} alt="logo" className="w-10 drop-shadow-lg" />
             EduMultiPro
-          </h1>
+          </motion.h1>
           <span className="text-sm text-gray-300">
             Tu Aliado en el Camino Educativo
           </span>
         </div>
-      </header>
+      </motion.header>
 
       {/* MAIN */}
-      <main className="flex flex-1 items-center justify-center p-6">
-        <div className="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl flex flex-col md:flex-row items-center p-10 gap-10 border border-white/20 w-full max-w-4xl">
+      <main className="flex flex-1 items-center justify-center p-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="bg-white/10 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col md:flex-row items-center p-10 gap-10 border border-white/20 w-full max-w-5xl"
+        >
           {/* FORMULARIO */}
           <div className="w-full md:w-96">
-            <h2 className="text-3xl font-bold mb-6 text-center text-futuristic">
+            <motion.h2
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-3xl font-bold mb-6 text-center"
+            >
               Iniciar Sesión
-            </h2>
+            </motion.h2>
             <form className="flex flex-col gap-4">
-              <input
+              <motion.input
+                whileFocus={{ scale: 1.02 }}
                 type="email"
                 placeholder="Correo"
-                className="p-3 rounded-xl bg-slate-900/60 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-futuristic"
+                className="p-3 rounded-xl bg-slate-900/70 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
               />
-              <input
+              <motion.input
+                whileFocus={{ scale: 1.02 }}
                 type="password"
                 placeholder="Contraseña"
-                className="p-3 rounded-xl bg-slate-900/60 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-futuristic"
+                className="p-3 rounded-xl bg-slate-900/70 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
               />
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="p-3 rounded-xl bg-futuristic font-bold hover:bg-secondary transition-all duration-300 shadow-md hover:scale-105"
+                className="p-3 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 font-bold shadow-md text-white transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100"
               >
                 Ingresar
-              </button>
+              </motion.button>
               <a
                 href="#"
-                className="text-sm text-center text-gray-300 hover:text-futuristic transition-colors"
+                className="text-sm text-center text-gray-300 hover:text-pink-400 transition-colors"
               >
                 ¿Olvidaste tu contraseña?
               </a>
             </form>
           </div>
 
-          {/* IMAGEN */}
-          <div className="hidden md:block">
+          {/* IMAGEN ANIMADA */}
+          <motion.div
+            initial={{ y: 0 }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="hidden md:block"
+          >
             <img
               src={loginImg}
               alt="login"
               className="w-80 rounded-2xl shadow-lg border border-white/20"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-slate-950/80 backdrop-blur-md mt-10">
+      <motion.footer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="bg-slate-950/70 backdrop-blur-md mt-10"
+      >
         <div className="container mx-auto p-6 grid md:grid-cols-3 gap-6 text-gray-300">
           <div>
             <h3 className="font-bold text-white text-lg">EduMultiPro</h3>
@@ -85,19 +124,19 @@ export default function App() {
           <div>
             <h3 className="font-bold text-white text-lg">Síguenos</h3>
             <div className="flex gap-4 mt-2">
-              <a href="#" className="hover:text-futuristic transition-colors">
+              <a href="#" className="hover:text-pink-400 transition-colors">
                 🌐 Facebook
               </a>
-              <a href="#" className="hover:text-futuristic transition-colors">
+              <a href="#" className="hover:text-pink-400 transition-colors">
                 🐦 Twitter
               </a>
-              <a href="#" className="hover:text-futuristic transition-colors">
+              <a href="#" className="hover:text-pink-400 transition-colors">
                 📸 Instagram
               </a>
             </div>
             <a
               href="#"
-              className="block mt-3 text-sm hover:text-futuristic transition-colors"
+              className="block mt-3 text-sm hover:text-pink-400 transition-colors"
             >
               Términos y Condiciones
             </a>
@@ -106,10 +145,9 @@ export default function App() {
         <div className="text-center text-gray-500 text-sm border-t border-slate-700 py-3">
           © 2025 EduMultiPro • Todos los derechos reservados
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }
-
 
 
