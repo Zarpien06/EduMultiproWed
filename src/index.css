@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fuente futurista */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+/* Fuente futurista */
 body {
-  @apply font-sans bg-gray-900 text-white;
+  font-family: 'Poppins', sans-serif;
 }
