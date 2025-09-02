@@ -2,14 +2,10 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",  // 👈 necesario para detectar clases
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        futuristic: ["Poppins", "sans-serif"],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
