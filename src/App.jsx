@@ -1,19 +1,31 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { Sun, Moon, LogIn } from "lucide-react";
 import logo from "./assets/logo.png";
-import loginImg from "./assets/1.png";
 
-// Para 3D
+// 3D
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Float, MeshDistortMaterial } from "@react-three/drei";
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
+  const [form, setForm] = useState({ email: "", password: "" });
+
+  const toggleDark = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle("dark");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Bienvenido ${form.email}`);
+  };
 
   return (
-    <div className="relative flex flex-col min-h-screen overflow-hidden bg-slate-950 text-white">
+    <div className="relative flex flex-col min-h-screen overflow-hidden bg-gray-100 dark:bg-slate-950 text-gray-900 dark:text-white transition-colors">
       {/* NAVBAR */}
-      <header className="fixed w-full top-0 z-50 bg-slate-950/70 backdrop-blur-md shadow-md">
+      <header className="fixed w-full top-0 z-50 bg-white/30 dark:bg-slate-900/50 backdrop-blur-lg shadow-md">
         <div className="container mx-auto flex items-center justify-between p-4">
           <div className="flex items-center gap-2">
             <img src={logo} alt="logo" className="w-10" />
@@ -23,19 +35,28 @@ export default function App() {
           </div>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex gap-6 text-gray-300 font-medium">
+          <nav className="hidden md:flex gap-6 text-gray-700 dark:text-gray-300 font-medium">
             <a href="#features" className="hover:text-pink-400">Funciones</a>
-            <a href="#objetivos" className="hover:text-pink-400">Objetivos</a>
             <a href="#contacto" className="hover:text-pink-400">Contacto</a>
           </nav>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-gray-300"
-          >
-            ☰
-          </button>
+          <div className="flex items-center gap-4">
+            {/* Dark/Light Toggle */}
+            <button
+              onClick={toggleDark}
+              className="p-2 rounded-full bg-gray-200 dark:bg-slate-700 hover:scale-110 transition"
+            >
+              {darkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-gray-700" />}
+            </button>
+
+            {/* Mobile Hamburger */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden text-gray-700 dark:text-gray-300"
+            >
+              ☰
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -43,10 +64,9 @@ export default function App() {
           <motion.nav
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="bg-slate-900 md:hidden flex flex-col gap-4 p-4"
+            className="bg-white/90 dark:bg-slate-900/90 md:hidden flex flex-col gap-4 p-4 text-gray-800 dark:text-gray-200"
           >
             <a href="#features" className="hover:text-pink-400">Funciones</a>
-            <a href="#objetivos" className="hover:text-pink-400">Objetivos</a>
             <a href="#contacto" className="hover:text-pink-400">Contacto</a>
           </motion.nav>
         )}
@@ -73,62 +93,63 @@ export default function App() {
             >
               Educación Digital al Alcance de Todos
             </motion.h1>
-            <p className="text-gray-300 max-w-lg mb-6">
+            <p className="text-gray-700 dark:text-gray-300 max-w-lg mb-6">
               EduMultiPro centraliza la gestión académica en colegios con recursos limitados. 
               Comunicación, organización y aprendizaje en una sola plataforma.
             </p>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              href="#features"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 shadow-lg font-bold"
-            >
-              Explorar Funciones
-            </motion.a>
           </div>
 
           {/* Login Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-slate-900/80 p-8 rounded-2xl shadow-2xl backdrop-blur-lg border border-white/10"
+            className="bg-white/80 dark:bg-slate-900/80 p-8 rounded-2xl shadow-2xl backdrop-blur-lg border border-white/10"
           >
             <h3 className="text-2xl font-bold mb-6 text-center">Inicia Sesión</h3>
-            <form className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input
                 type="email"
                 placeholder="Correo electrónico"
-                className="p-3 rounded-lg bg-slate-800 border border-slate-700 text-white"
+                required
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                className="p-3 rounded-lg bg-gray-50 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-white"
               />
               <input
                 type="password"
                 placeholder="Contraseña"
-                className="p-3 rounded-lg bg-slate-800 border border-slate-700 text-white"
+                required
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                className="p-3 rounded-lg bg-gray-50 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-white"
               />
-              <button className="px-4 py-3 rounded-lg bg-gradient-to-r from-pink-500 to-blue-500 font-bold">
-                Entrar
-              </button>
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-4 py-3 rounded-lg bg-gradient-to-r from-pink-500 to-blue-500 font-bold text-white flex items-center justify-center gap-2"
+              >
+                <LogIn className="w-5 h-5" /> Entrar
+              </motion.button>
             </form>
-            <p className="text-sm text-gray-400 mt-4 text-center">
-              ¿No tienes cuenta? <a href="#" className="text-pink-400 hover:underline">Regístrate</a>
-            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 3D INTERACTIVO MEJORADO */}
-      <section className="relative h-[500px] bg-slate-900 flex items-center justify-center">
+      {/* 3D INTERACTIVO */}
+      <section className="relative h-[500px] flex items-center justify-center bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
         <Canvas camera={{ position: [0, 0, 6] }}>
-          <ambientLight intensity={0.7} />
+          <ambientLight intensity={0.6} />
           <directionalLight position={[3, 3, 3]} intensity={1} />
-          <Float speed={3} rotationIntensity={2} floatIntensity={2}>
+          <Float speed={2.5} rotationIntensity={1.5} floatIntensity={2}>
             <mesh>
-              <torusKnotGeometry args={[1.2, 0.4, 128, 32]} />
+              <icosahedronGeometry args={[1.5, 1]} />
               <MeshDistortMaterial
-                color="#60a5fa"
-                distort={0.3}
+                color="#ec4899"
+                distort={0.4}
                 speed={2}
-                roughness={0.2}
-                metalness={0.6}
+                roughness={0.3}
+                metalness={0.5}
               />
             </mesh>
           </Float>
@@ -149,27 +170,14 @@ export default function App() {
             <motion.div
               key={i}
               whileHover={{ scale: 1.05 }}
-              className="bg-white/10 rounded-2xl p-6 backdrop-blur-lg shadow-lg border border-white/10"
+              className="bg-white/10 dark:bg-white/5 rounded-2xl p-6 backdrop-blur-lg shadow-lg border border-white/10"
             >
               <h3 className="font-bold text-lg mb-2">{f}</h3>
-              <p className="text-gray-300 text-sm">
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
                 Gestión sencilla y centralizada para mejorar la organización escolar.
               </p>
             </motion.div>
           ))}
-        </div>
-      </section>
-
-      {/* OBJETIVOS */}
-      <section id="objetivos" className="py-20 bg-slate-900 px-6">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Objetivos</h2>
-          <ul className="grid md:grid-cols-2 gap-6 text-gray-300 text-lg">
-            <li>✔ Gestionar usuarios, cursos, grados y noticias.</li>
-            <li>✔ Facilitar comunicación entre docentes y estudiantes.</li>
-            <li>✔ Permitir envío y revisión de trabajos.</li>
-            <li>✔ Optimizar acceso a información académica.</li>
-          </ul>
         </div>
       </section>
 
@@ -184,7 +192,6 @@ export default function App() {
             <h3 className="text-white font-bold mb-2">Enlaces</h3>
             <ul className="space-y-1">
               <li><a href="#features" className="hover:text-pink-400">Funciones</a></li>
-              <li><a href="#objetivos" className="hover:text-pink-400">Objetivos</a></li>
             </ul>
           </div>
           <div>
@@ -213,5 +220,3 @@ export default function App() {
     </div>
   );
 }
-
-
