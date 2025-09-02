@@ -5,18 +5,17 @@ import loginImg from "./assets/1.png";
 export default function App() {
   return (
     <div className="relative flex flex-col min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white">
-      {/* FONDO CON PARTICULAS */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.15),transparent_40%)] animate-pulse"></div>
-        <div className="absolute w-full h-full bg-[radial-gradient(circle_at_80%_80%,rgba(236,72,153,0.15),transparent_40%)] animate-pulse"></div>
-      </div>
+
+      {/* FONDO INTERACTIVO */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-pink-500/20 via-purple-500/20 to-blue-500/20 bg-animated"></div>
+      <div className="absolute inset-0 -z-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
 
       {/* NAVBAR */}
       <motion.header
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="bg-slate-950/70 backdrop-blur-md shadow-lg sticky top-0 z-50"
+        className="bg-slate-950/60 backdrop-blur-md shadow-lg sticky top-0 z-50"
       >
         <div className="container mx-auto flex items-center justify-between p-4">
           <motion.h1
@@ -24,9 +23,11 @@ export default function App() {
             className="text-2xl font-bold flex items-center gap-2"
           >
             <img src={logo} alt="logo" className="w-10 drop-shadow-lg" />
-            EduMultiPro
+            <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
+              EduMultiPro
+            </span>
           </motion.h1>
-          <span className="text-sm text-gray-300">
+          <span className="text-sm text-gray-300 hidden md:block">
             Tu Aliado en el Camino Educativo
           </span>
         </div>
@@ -38,7 +39,7 @@ export default function App() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="bg-white/10 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col md:flex-row items-center p-10 gap-10 border border-white/20 w-full max-w-5xl"
+          className="bg-white/10 backdrop-blur-2xl rounded-3xl shadow-[0_0_40px_rgba(236,72,153,0.3)] flex flex-col md:flex-row items-center p-10 gap-10 border border-white/20 w-full max-w-5xl"
         >
           {/* FORMULARIO */}
           <div className="w-full md:w-96">
@@ -46,7 +47,7 @@ export default function App() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-3xl font-bold mb-6 text-center"
+              className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-pink-400 bg-clip-text text-transparent"
             >
               Iniciar Sesión
             </motion.h2>
@@ -67,7 +68,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="p-3 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 font-bold shadow-md text-white transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100"
+                className="p-3 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 font-bold shadow-lg text-white transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100"
               >
                 Ingresar
               </motion.button>
