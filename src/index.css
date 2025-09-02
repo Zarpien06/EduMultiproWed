@@ -9,7 +9,6 @@ body {
   @apply bg-slate-950 text-white;
 }
 
-/* Animación degradado futurista */
 .bg-animated {
   background-size: 400% 400%;
   animation: gradientMove 12s ease infinite;
