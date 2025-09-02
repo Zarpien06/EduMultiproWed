@@ -6,22 +6,25 @@ export default function App() {
     <div className="flex flex-col min-h-screen">
       {/* NAVBAR */}
       <header className="bg-slate-950 shadow-lg">
-    <div className="container mx-auto flex items-center justify-between p-4">
-      <h1 className="text-2xl font-bold text-futuristic flex items-center gap-2">
-       <img src={logo} alt="logo" className="w-10" />
-           EduMultiPro
-         </h1>
-        <span className="text-sm text-gray-300">Tu Aliado en el Camino Educativo</span>
-         </div>
+        <div className="container mx-auto flex items-center justify-between p-4">
+          <h1 className="text-2xl font-bold text-futuristic flex items-center gap-2">
+            <img src={logo} alt="logo" className="w-10" />
+            EduMultiPro
+          </h1>
+          <span className="text-sm text-gray-300">
+            Tu Aliado en el Camino Educativo
+          </span>
+        </div>
       </header>
-
 
       {/* MAIN */}
       <main className="flex flex-1 items-center justify-center">
         <div className="bg-slate-800/70 backdrop-blur-lg rounded-2xl shadow-2xl flex flex-col md:flex-row items-center p-10 gap-10">
           {/* FORMULARIO */}
           <div className="w-80">
-            <h2 className="text-2xl font-bold mb-6 text-center text-futuristic">Iniciar Sesión</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center text-futuristic">
+              Iniciar Sesión
+            </h2>
             <form className="flex flex-col gap-4">
               <input
                 type="email"
@@ -39,16 +42,23 @@ export default function App() {
               >
                 Ingresar
               </button>
-              <a href="#" className="text-sm text-center text-gray-300 hover:text-futuristic">
+              <a
+                href="#"
+                className="text-sm text-center text-gray-300 hover:text-futuristic"
+              >
                 ¿Olvidaste tu contraseña?
               </a>
             </form>
           </div>
 
           {/* IMAGEN */}
-         <div className="hidden md:block">
-           <img src={loginImg} alt="login" className="w-80 rounded-2xl shadow-lg" />
-         </div>
+          <div className="hidden md:block">
+            <img
+              src={loginImg}
+              alt="login"
+              className="w-80 rounded-2xl shadow-lg"
+            />
+          </div>
         </div>
       </main>
 
@@ -58,8 +68,8 @@ export default function App() {
           <div>
             <h3 className="font-bold text-white">EduMultiPro</h3>
             <p className="text-sm">
-              Innovación y apoyo para tu formación profesional. Cursos, guías y recursos pensados
-              para tu crecimiento.
+              Innovación y apoyo para tu formación profesional. Cursos, guías y
+              recursos pensados para tu crecimiento.
             </p>
           </div>
 
@@ -75,11 +85,22 @@ export default function App() {
           <div>
             <h3 className="font-bold text-white">Síguenos</h3>
             <div className="flex gap-4 mt-2">
-              <a href="#" className="hover:text-futuristic">Facebook</a>
-              <a href="#" className="hover:text-futuristic">Twitter</a>
-              <a href="#" className="hover:text-futuristic">Instagram</a>
+              <a href="#" className="hover:text-futuristic">
+                Facebook
+              </a>
+              <a href="#" className="hover:text-futuristic">
+                Twitter
+              </a>
+              <a href="#" className="hover:text-futuristic">
+                Instagram
+              </a>
             </div>
-            <a href="#" className="block mt-3 text-sm hover:text-futuristic">Términos y Condiciones</a>
+            <a
+              href="#"
+              className="block mt-3 text-sm hover:text-futuristic"
+            >
+              Términos y Condiciones
+            </a>
           </div>
         </div>
         <div className="text-center text-gray-500 text-sm border-t border-slate-700 py-3">
@@ -89,4 +110,5 @@ export default function App() {
     </div>
   );
 }
+
 
